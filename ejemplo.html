@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Mundo Web | COED República de China</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fc;
+      color: #263247;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #101d45, #1769aa, #21b6b1);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    header h1 {
+      font-size: clamp(30px, 5vw, 46px);
+      margin: 12px 0;
+    }
+
+    nav {
+      background: #101d45;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      padding: 12px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #21b6b1;
+      color: #101d45;
+    }
+
+    .portada {
+      min-height: 340px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 45px 20px;
+      color: white;
+      background:
+        linear-gradient(rgba(9,23,54,.72), rgba(9,23,54,.72)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80")
+        center/cover;
+    }
+
+    .portada-contenido {
+      max-width: 750px;
+    }
+
+    .portada h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 15px;
+    }
+
+    .boton {
+      display: inline-block;
+      background: #21b6b1;
+      color: #102244;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 12px 22px;
+      border-radius: 8px;
+      margin-top: 18px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .boton:hover {
+      background: #b9f5ed;
+    }
+
+    section {
+      padding: 50px 7%;
+      scroll-margin-top: 20px;
+    }
+
+    .titulo {
+      text-align: center;
+      font-size: 30px;
+      color: #123a70;
+      margin-bottom: 12px;
+    }
+
+    .subtitulo {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      color: #667085;
+    }
+
+    .tarjetas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+    }
+
+    .tarjeta {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(20,40,80,.09);
+      transition: .3s;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+    }
+
+    .tarjeta img {
+      display: block;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .tarjeta-contenido {
+      padding: 22px;
+    }
+
+    .tarjeta h3 {
+      color: #1769aa;
+      margin-bottom: 10px;
+    }
+
+    .mision-vision {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .caja {
+      background: white;
+      padding: 25px;
+      border-left: 5px solid #21b6b1;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(20,40,80,.07);
+    }
+
+    .caja h3 {
+      color: #1769aa;
+      margin-bottom: 12px;
+    }
+
+    .icono {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .galeria img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 13px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+      transition: .3s;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.03);
+    }
+
+    .enlaces {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .enlaces a {
+      background: #123a70;
+      color: white;
+      padding: 12px 17px;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    .enlaces a:hover {
+      background: #21b6b1;
+      color: #102244;
+    }
+
+    .formulario {
+      background: white;
+      max-width: 600px;
+      margin: auto;
+      padding: 28px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(20,40,80,.09);
+    }
+
+    .formulario label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .formulario input,
+    .formulario textarea,
+    .formulario select {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 7px;
+      border: 1px solid #ccd5e2;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    .formulario .boton {
+      width: 100%;
+    }
+
+    #mensaje {
+      margin-top: 15px;
+      color: #176b45;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #101d45;
+      color: white;
+      text-align: center;
+      padding: 28px 15px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 35px 5%;
+      }
+
+      .portada {
+        min-height: 290px;
+      }
+
+      .formulario {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <p>💻 Educación • Tecnología • Creatividad</p>
+    <h1>MI MUNDO WEB</h1>
+    <p>COED República de China</p>
+    <p>Un espacio para aprender, compartir y descubrir.</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#mision">Misión y visión</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Visitantes</a>
+  </nav>
+
+  <div class="portada" id="inicio">
+    <div class="portada-contenido">
+      <h2>¡Bienvenidos a nuestro mundo digital!</h2>
+      <p>
+        La tecnología nos ayuda a aprender, desarrollar nuestra
+        creatividad y construir un futuro lleno de oportunidades.
+      </p>
+      <a href="#nosotros" class="boton">Descubrir más</a>
+    </div>
+  </div>
+
+  <section id="nosotros">
+    <h2 class="titulo">¿Qué encontrarás aquí?</h2>
+    <p class="subtitulo">
+      Un espacio dedicado al aprendizaje, la informática y las ideas.
+    </p>
+
+    <div class="tarjetas">
+      <article class="tarjeta">
+        <img
+          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80"
+          alt="Computadora utilizada para programación">
+        <div class="tarjeta-contenido">
+          <h3>💻 Informática</h3>
+          <p>
+            Aprendemos a utilizar computadoras, crear documentos,
+            organizar información y desarrollar habilidades digitales.
+          </p>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80"
+          alt="Estudiantes colaborando">
+        <div class="tarjeta-contenido">
+          <h3>📚 Educación</h3>
+          <p>
+            El conocimiento nos ayuda a comprender el mundo,
+            resolver problemas y alcanzar nuestras metas.
+          </p>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <img
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80"
+          alt="Personas trabajando en equipo">
+        <div class="tarjeta-contenido">
+          <h3>🌟 Trabajo en equipo</h3>
+          <p>
+            Compartir ideas, respetar opiniones y colaborar
+            nos permite aprender y realizar mejores proyectos.
+          </p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="mision" style="background:#e5effb;">
+    <h2 class="titulo">Nuestra misión y visión</h2>
+    <p class="subtitulo">
+      Principios que orientan nuestro aprendizaje y crecimiento.
+    </p>
+
+    <div class="mision-vision">
+      <div class="caja">
+        <div class="icono">🎯</div>
+        <h3>Misión</h3>
+        <p>
+          Promover el aprendizaje de la informática y el uso
+          responsable de la tecnología, desarrollando conocimientos,
+          creatividad y habilidades académicas.
+        </p>
+      </div>
+
+      <div class="caja">
+        <div class="icono">🚀</div>
+        <h3>Visión</h3>
+        <p>
+          Ser un espacio creativo e innovador donde los estudiantes
+          compartan ideas y fortalezcan sus habilidades digitales
+          para prepararse para el futuro.
+        </p>
+      </div>
+
+      <div class="caja">
+        <div class="icono">🤝</div>
+        <h3>Valores</h3>
+        <p>
+          Practicar el respeto, la responsabilidad, la honestidad,
+          la solidaridad y el trabajo en equipo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2 class="titulo">Nuestra galería</h2>
+    <p class="subtitulo">
+      Imágenes relacionadas con la educación, la creatividad
+      y la tecnología.
+    </p>
+
+    <div class="galeria">
+      <img
+        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80"
+        alt="Trabajo con computadoras">
+
+      <img
+        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=700&q=80"
+        alt="Programación">
+
+      <img
+        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80"
+        alt="Estudiantes trabajando juntos">
+
+      <img
+        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=700&q=80"
+        alt="Colaboración tecnológica">
+    </div>
+  </section>
+
+  <section>
+    <h2 class="titulo">Enlaces de interés</h2>
+    <p class="subtitulo">
+      Explora estos sitios y recursos.
+    </p>
+
+    <div class="enlaces">
+      <a href="https://www.mined.gob.sv/"
+         target="_blank" rel="noopener noreferrer">
+        Ministerio de Educación
+      </a>
+
+      <a href="https://www.nintendo.com/"
+         target="_blank" rel="noopener noreferrer">
+        Nintendo
+      </a>
+
+      <a href="Base%20Access%20China.html">Registros</a>
+      <a href="index.html">Hoja 2</a>
+      <a href="iindex.html">Hoja 3</a>
+
+      <a href="https://docs.google.com/spreadsheets/d/13HsCcHAgIrKN511fNy1tgMPfpdHYnRiSEOrYHAERCoE/edit?usp=sharing"
+         target="_blank" rel="noopener noreferrer">
+        Hoja de cálculo
+      </a>
+    </div>
+  </section>
+
+  <section id="contacto" style="background:#e5effb;">
+    <h2 class="titulo">Registro de visitantes</h2>
+    <p class="subtitulo">
+      Completa el formulario de demostración.
+    </p>
+
+    <form class="formulario" id="formularioVisitantes">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre"
+             placeholder="Escribe tu nombre" required>
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" name="correo"
+             placeholder="ejemplo@correo.com" required>
+
+      <label for="motivo">Motivo de la visita:</label>
+      <select id="motivo" name="motivo" required>
+        <option value="">Selecciona una opción</option>
+        <option value="Estudio">Estudio</option>
+        <option value="Informática">Informática</option>
+        <option value="Proyecto escolar">Proyecto escolar</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <label for="comentario">Comentario:</label>
+      <textarea id="comentario" name="comentario" rows="4"
+                placeholder="Escribe un comentario opcional"></textarea>
+
+      <button type="submit" class="boton">
+        Enviar formulario
+      </button>
+
+      <p id="mensaje" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="subtitulo" style="margin-top:20px;">
+      Este formulario es una demostración.
+      Los datos no se guardan en una base de datos.
+    </p>
+  </section>
+
+  <footer>
+    <h3>MI MUNDO WEB</h3>
+    <p>COED República de China</p>
+    <p>Aprender hoy para construir el futuro.</p>
+    <p>© 2026 | Proyecto educativo de informática</p>
+  </footer>
+
+  <script>
+    const formulario = document.getElementById("formularioVisitantes");
+    const mensaje = document.getElementById("mensaje");
+
+    formulario.addEventListener("submit", function(evento) {
+      evento.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+
+      mensaje.textContent =
+        "¡Gracias, " + nombre +
+        "! El formulario funciona correctamente como demostración.";
+
+      formulario.reset();
+    });
+  </script>
+
+</body>
+</html>
